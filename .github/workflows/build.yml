@@ -129,31 +129,33 @@ jobs:
           cp -a -r ./artifacts/whisper-aarch64-apple-darwin/. ./npm/aarch64-apple-darwin/
           cp -a -r ./artifacts/whisper-x86_64-apple-darwin/. ./npm/x86_64-apple-darwin/
           cp -a -r ./artifacts/whisper-bin-i686-pc-windows-msvc/. ./npm/i686-pc-windows-msvc/
+          mv ./npm/i686-pc-windows-msvc/main.exe ./npm/i686-pc-windows-msvc/whisper-cli.exe
           cp -a -r ./artifacts/whisper-bin-x86_64-pc-windows-msvc/. ./npm/x86_64-pc-windows-msvc/
+          mv ./npm/x86_64-pc-windows-msvc/main.exe ./npm/x86_64-pc-windows-msvc/whisper-cli.exe
 
       - name: git status
         run: git status
       - name: Display structure of downloaded files
         run: ls -R
         working-directory: npm  
-      # - name: Publish aarch64-apple-darwin
-      #   run: |
-      #     pnpm publish --access public --dry-run
-      #   working-directory: npm/aarch64-apple-darwin
-      # - name: Publish x86_64-apple-darwin
-      #   run: |
-      #     pnpm publish --access public --dry-run
-      #   working-directory: npm/x86_64-apple-darwin
-      # - name: Publish i686-pc-windows-msvc
-      #   run: |
-      #     pnpm publish --access public --dry-run
-      #   working-directory: npm/i686-pc-windows-msvc
-      # - name: Publish x86_64-pc-windows-msvc
-      #   run: |
-      #     pnpm publish --access public --dry-run
-      #   working-directory: npm/x86_64-pc-windows-msvc
-      # - name: Publish
-      #   run: |
-      #     pnpm publish --access public --dry-run
+      - name: Publish aarch64-apple-darwin
+        run: |
+          pnpm publish --access public --dry-run
+        working-directory: npm/aarch64-apple-darwin
+      - name: Publish x86_64-apple-darwin
+        run: |
+          pnpm publish --access public --dry-run
+        working-directory: npm/x86_64-apple-darwin
+      - name: Publish i686-pc-windows-msvc
+        run: |
+          pnpm publish --access public --dry-run
+        working-directory: npm/i686-pc-windows-msvc
+      - name: Publish x86_64-pc-windows-msvc
+        run: |
+          pnpm publish --access public --dry-run
+        working-directory: npm/x86_64-pc-windows-msvc
+      - name: Publish
+        run: |
+          pnpm publish --access public --dry-run
 
       

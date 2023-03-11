@@ -8,4 +8,4 @@ npm/**/whisper-cli-aarch64-apple-darwin
 npm/**/download-ggml-model.sh
 npm/**/*.exe
 npm/**/*.cmd
-npm/**/*.ddl
+npm/**/*.dll

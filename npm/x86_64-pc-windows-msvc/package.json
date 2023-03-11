@@ -7,6 +7,10 @@
   "cpu": [
     "x64"
   ],
+  "files": [
+    "whisper-cli.exe",
+    "download-ggml-model.cmd"
+  ],
   "description": "win32-x64-msvc binary for @promer94/whisper-tauri",
   "license": "MIT",
   "engines": {
