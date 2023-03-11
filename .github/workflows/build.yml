@@ -28,6 +28,12 @@ jobs:
       - name: Build
         run: |
           ${{ matrix.build }}
+      
+      - name: Upload binaries
+        uses: actions/upload-artifact@v1
+        with:
+          name: whisper-macos-${{ matrix.cpu }}
+          path: ./whisper.cpp/main
 
   windows:
     runs-on: windows-latest
@@ -60,13 +66,11 @@ jobs:
           C:/msys64/usr/bin/wget.exe -qO sdl2.zip https://github.com/libsdl-org/SDL/releases/download/release-${{ matrix.s2ver }}/SDL2-devel-${{ matrix.s2ver }}-VC.zip
           7z x sdl2.zip
           echo "SDL2_DIR=$env:GITHUB_WORKSPACE/SDL2-${{ matrix.s2ver }}/cmake" >> $env:GITHUB_ENV
-          cd whisper.cpp
 
       - name: Configure
-        run: >
-          cmake -S . -B ./build -A ${{ matrix.arch }}
-          -DCMAKE_BUILD_TYPE=${{ matrix.build }}
-          -DWHISPER_SUPPORT_SDL2=${{ matrix.sdl2 }}
+        run: |
+          cd ./whisper.cpp
+          cmake -S . -B ./build -A ${{ matrix.arch }} -DCMAKE_BUILD_TYPE=${{ matrix.build }} -DWHISPER_SUPPORT_SDL2=${{ matrix.sdl2 }}
 
       - name: Build
         run: |
