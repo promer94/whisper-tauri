@@ -130,6 +130,9 @@ jobs:
           cp -r ./artifacts/whisper-x86_64-apple-darwin ./npm/x86_64-apple-darwin
           cp -r ./artifacts/whisper-bin-i686-pc-windows-msvc ./npm/i686-pc-windows-msvc
           cp -r ./artifacts/whisper-bin-x86_64-pc-windows-msvc ./npm/x86_64-pc-windows-msvc
+
+      - name: git status
+        run: git status
       - name: Publish aarch64-apple-darwin
         run: |
           pnpm publish --access public --dry-run
