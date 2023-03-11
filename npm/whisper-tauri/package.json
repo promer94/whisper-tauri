@@ -1,7 +1,7 @@
 {
-  "name": "@promer94/whisper-tauri",
+  "name": "@promer94/whisper-sidecar-tauri",
   "version": "0.0.1",
-  "description": "whisper.cpp binary sidescar for tauri",
+  "description": "whisper.cpp binary sidecar for tauri",
   "module": "dist/index.mjs",
   "type": "module",
   "scripts": {
