@@ -24,17 +24,20 @@ jobs:
         run: |
           brew update
           brew install sdl2
-
       - name: Build
         run: |
           ${{ matrix.build }}
           mv ./whisper.cpp/main ./whisper.cpp/whisper-cli-${{ matrix.target }}
+          mkdir dist
+          cp ./whisper.cpp/whisper-cli-${{ matrix.target }} ./dist
+          chmod +x ./dist/whisper-cli-${{ matrix.target }}
+          cp ./whisper.cpp/models/download-ggml-model.sh ./dist
       
       - name: Upload binaries
         uses: actions/upload-artifact@v1
         with:
           name: whisper-${{ matrix.target }}
-          path: ./whisper.cpp/whisper-cli-${{ matrix.target }}
+          path: dist
 
   windows:
     runs-on: windows-latest
@@ -83,6 +86,10 @@ jobs:
       - name: Copy SDL2.dll
         if: matrix.sdl2 == 'ON'
         run: copy "$env:SDL2_DIR/../lib/${{ matrix.s2arc }}/SDL2.dll" ./whisper.cpp/build/bin/${{ matrix.build }}
+
+      - name: Copy model downloader
+        if: matrix.sdl2 == 'ON'
+        run: copy ./whisper.cpp/models/download-ggml-model.cmd ./whisper.cpp/build/bin/${{ matrix.build }}
 
       - name: Upload binaries
         if: matrix.sdl2 == 'ON'
