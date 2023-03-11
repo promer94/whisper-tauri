@@ -8,10 +8,10 @@ jobs:
       matrix:
         target: ["aarch64-apple-darwin", "x86_64-apple-darwin"]
         include:
-          - cpu: "aarch64-apple-darwin"
+          - target: "aarch64-apple-darwin"
             build: |
               make UNAME_P=arm UNAME_M=arm64
-          - cpu: "x86_64-apple-darwin"
+          - target: "x86_64-apple-darwin"
             build: |
               make
     steps:
