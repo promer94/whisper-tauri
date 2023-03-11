@@ -1,5 +1,11 @@
 name: CI
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+  pull_request:
 
 jobs:
   build-mac:
@@ -98,7 +104,10 @@ jobs:
           path: ./whisper.cpp/build/bin/${{ matrix.build }}
   publish:
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
     needs: [build-mac, build-windows]
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NODE_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - name: Setup pnpm
@@ -140,22 +149,22 @@ jobs:
         working-directory: npm  
       - name: Publish aarch64-apple-darwin
         run: |
-          pnpm publish --access public --dry-run
+          pnpm publish --access public
         working-directory: npm/aarch64-apple-darwin
       - name: Publish x86_64-apple-darwin
         run: |
-          pnpm publish --access public --dry-run
+          pnpm publish --access public
         working-directory: npm/x86_64-apple-darwin
       - name: Publish i686-pc-windows-msvc
         run: |
-          pnpm publish --access public --dry-run
+          pnpm publish --access public
         working-directory: npm/i686-pc-windows-msvc
       - name: Publish x86_64-pc-windows-msvc
         run: |
-          pnpm publish --access public --dry-run
+          pnpm publish --access public
         working-directory: npm/x86_64-pc-windows-msvc
       - name: Publish
         run: |
-          pnpm publish --access public --dry-run
+          pnpm publish --access public
 
       
