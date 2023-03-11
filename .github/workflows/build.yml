@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: |
           ${{ matrix.build }}
-          mv ./whisper.cpp/main ./whisper.cpp/whisper-cli-${{ matrix.target }}
+          mv ./whisper.cpp/main ./whisper.cpp/whisper-${{ matrix.target }}
           mkdir dist
           cp ./whisper.cpp/whisper-${{ matrix.target }} ./dist
           chmod +x ./dist/whisper-${{ matrix.target }}
