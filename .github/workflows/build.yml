@@ -102,7 +102,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2.2.4
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
       - name: Use Node.js 18
         uses: actions/setup-node@v3
         with:
