@@ -140,7 +140,7 @@ jobs:
           cp -a -r ./artifacts/whisper-bin-i686-pc-windows-msvc/. ./npm/i686-pc-windows-msvc/
           mv ./npm/i686-pc-windows-msvc/main.exe ./npm/i686-pc-windows-msvc/whisper-i686-pc-windows-msvc.exe
           cp -a -r ./artifacts/whisper-bin-x86_64-pc-windows-msvc/. ./npm/x86_64-pc-windows-msvc/
-          mv ./npm/x86_64-pc-windows-msvc/main.exe ./npm/x86_64-pc-windows-msvc/x86_64-pc-windows-msvc.exe
+          mv ./npm/x86_64-pc-windows-msvc/main.exe ./npm/x86_64-pc-windows-msvc/whisper-x86_64-pc-windows-msvc.exe
 
       - name: git status
         run: git status
