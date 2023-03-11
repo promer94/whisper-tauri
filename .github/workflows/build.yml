@@ -116,6 +116,7 @@ jobs:
         run: |
           corepack enable
           pnpm install
+          pnpm build
       - name: Download all artifacts
         uses: actions/download-artifact@v3
         with:
@@ -123,3 +124,30 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
         working-directory: artifacts
+      - name: Copy artifacts
+        run: |
+          cp -r ./artifacts/whisper-aarch64-apple-darwin ./npm/aarch64-apple-darwin
+          cp -r ./artifacts/whisper-x86_64-apple-darwin ./npm/x86_64-apple-darwin
+          cp -r ./artifacts/whisper-bin-i686-pc-windows-msvc ./npm/i686-pc-windows-msvc
+          cp -r ./artifacts/whisper-bin-x86_64-pc-windows-msvc ./npm/x86_64-pc-windows-msvc
+      - name: Publish aarch64-apple-darwin
+        run: |
+          pnpm publish --access public --dry-run
+        working-directory: npm/aarch64-apple-darwin
+      - name: Publish x86_64-apple-darwin
+        run: |
+          pnpm publish --access public --dry-run
+        working-directory: npm/x86_64-apple-darwin
+      - name: Publish i686-pc-windows-msvc
+        run: |
+          pnpm publish --access public --dry-run
+        working-directory: npm/i686-pc-windows-msvc
+      - name: Publish x86_64-pc-windows-msvc
+        run: |
+          pnpm publish --access public --dry-run
+        working-directory: npm/x86_64-pc-windows-msvc
+      - name: Publish
+        run: |
+          pnpm publish --access public --dry-run
+
+      
