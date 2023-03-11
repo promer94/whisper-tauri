@@ -3,7 +3,7 @@ build
 dist
 .vscode
 artifacts
-npm/**/whisper-x86_64-apple-darwin
+npm/**/whisper-cli-x86_64-apple-darwin
 npm/**/whisper-cli-aarch64-apple-darwin
 npm/**/download-ggml-model.sh
 npm/**/*.exe
