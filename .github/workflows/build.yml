@@ -6,12 +6,12 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        cpu: [M, INTEL]
+        target: ["aarch64-apple-darwin", "x86_64-apple-darwin"]
         include:
-          - cpu: M
+          - cpu: "aarch64-apple-darwin"
             build: |
               make UNAME_P=arm UNAME_M=arm64
-          - cpu: INTEL
+          - cpu: 'x86_64-apple-darwin'
             build: |
               make
     steps:
@@ -28,12 +28,13 @@ jobs:
       - name: Build
         run: |
           ${{ matrix.build }}
+          mv ./whisper.cpp/main ./whisper.cpp/whisper-cli-${{ matrix.target }}
       
       - name: Upload binaries
         uses: actions/upload-artifact@v1
         with:
-          name: whisper-macos-${{ matrix.cpu }}
-          path: ./whisper.cpp/main
+          name: whisper-${{ matrix.target }}
+          path: ./whisper.cpp/whisper-cli-${{ matrix.target }}
 
   windows:
     runs-on: windows-latest
@@ -46,8 +47,10 @@ jobs:
         include:
           - arch: Win32
             s2arc: x86
+            target: i686-pc-windows-msvc
           - arch: x64
             s2arc: x64
+            target: x86_64-pc-windows-msvc
           - sdl2: ON
             s2ver: 2.26.0
 
@@ -85,5 +88,5 @@ jobs:
         if: matrix.sdl2 == 'ON'
         uses: actions/upload-artifact@v1
         with:
-          name: whisper-bin-${{ matrix.arch }}
+          name: whisper-bin-${{ matrix.target }}
           path: ./whisper.cpp/build/bin/${{ matrix.build }}
