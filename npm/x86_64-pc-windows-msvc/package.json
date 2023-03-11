@@ -8,7 +8,7 @@
     "x64"
   ],
   "files": [
-    "whisper-cli.exe",
+    "whisper-x86_64-pc-windows-msvc.exe",
     "download-ggml-model.cmd",
     "whisper.dll",
     "SDL2.dll"
