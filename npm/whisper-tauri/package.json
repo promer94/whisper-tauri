@@ -1,0 +1,22 @@
+{
+  "name": "@promer94/whisper-tauri",
+  "version": "0.0.1",
+  "description": "whisper.cpp binary sidescar for tauri",
+  "module": "dist/index.mjs",
+  "type": "module",
+  "scripts": {
+    "build": "tsup"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [],
+  "author": "promer94",
+  "license": "MIT",
+  "optionalDependencies": {
+    "@promer94/whisper-tauri-win32-x64-msvc": "workspace:*",
+    "@promer94/whisper-tauri-x86_64-apple-darwin": "workspace:*",
+    "@promer94/whisper-tauri-win32-ia32-msvc": "workspace:*",
+    "@promer94/whisper-tauri-aarch64-apple-darwin": "workspace:*"
+  }
+}
