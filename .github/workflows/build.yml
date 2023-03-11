@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   macOS-latest:
-    runs-on: macOS-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         cpu: [M, INTEL]
