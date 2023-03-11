@@ -128,8 +128,8 @@ jobs:
         run: |
           cp -r ./artifacts/whisper-aarch64-apple-darwin ./npm/aarch64-apple-darwin
           cp -r ./artifacts/whisper-x86_64-apple-darwin ./npm/x86_64-apple-darwin
-          cp -r ./artifacts/whisper-bin-i686-pc-windows-msvc/** ./npm/i686-pc-windows-msvc
-          cp -r ./artifacts/whisper-bin-x86_64-pc-windows-msvc/** ./npm/x86_64-pc-windows-msvc
+          cp -r ./artifacts/whisper-bin-i686-pc-windows-msvc/ ./npm/i686-pc-windows-msvc
+          cp -r ./artifacts/whisper-bin-x86_64-pc-windows-msvc/ ./npm/x86_64-pc-windows-msvc
 
       - name: git status
         run: git status
