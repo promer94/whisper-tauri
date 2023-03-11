@@ -15,5 +15,11 @@
   "license": "MIT",
   "devDependencies": {
     "tsup": "^6.6.3"
+  },
+  "optionalDependencies": {
+    "@promer94/whisper-tauri-win32-x64-msvc": "0.0.1",
+    "@promer94/whisper-tauri-x86_64-apple-darwin": "0.0.1",
+    "@promer94/whisper-tauri-win32-ia32-msvc": "0.0.1",
+    "@promer94/whisper-tauri-aarch64-apple-darwin": "0.0.1"
   }
 }
