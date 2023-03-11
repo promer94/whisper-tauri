@@ -16,7 +16,9 @@ jobs:
               make
     steps:
       - name: Clone
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
+        with:
+          submodules: true
 
       - name: Dependencies
         run: |
@@ -45,7 +47,9 @@ jobs:
 
     steps:
       - name: Clone
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
+        with:
+          submodules: true
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1
@@ -56,6 +60,7 @@ jobs:
           C:/msys64/usr/bin/wget.exe -qO sdl2.zip https://github.com/libsdl-org/SDL/releases/download/release-${{ matrix.s2ver }}/SDL2-devel-${{ matrix.s2ver }}-VC.zip
           7z x sdl2.zip
           echo "SDL2_DIR=$env:GITHUB_WORKSPACE/SDL2-${{ matrix.s2ver }}/cmake" >> $env:GITHUB_ENV
+          cd whisper.cpp
 
       - name: Configure
         run: >
