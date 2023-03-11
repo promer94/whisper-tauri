@@ -1,7 +1,7 @@
 {
-  "name": "whisper-npm",
+  "name": "@promer94/whisper-tauri",
   "version": "1.0.0",
-  "description": "whisper.cpp binary for npm",
+  "description": "whisper.cpp binary sidescar for tauri",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "promer94",
   "license": "MIT",
-  "dependencies": {
-    "execa": "^7.0.0"
+  "devDependencies": {
+    "tsup": "^6.6.3"
   }
 }

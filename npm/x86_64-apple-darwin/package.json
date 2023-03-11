@@ -1,0 +1,19 @@
+{
+  "name": "@promer94/whisper-tauri-x86_64-apple-darwin",
+  "version": "1.0.0",
+  "os": [
+    "darwin"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "description": "x86_64-apple-darwin binary for @promer94/whisper-tauri",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 10"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}
