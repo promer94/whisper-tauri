@@ -35,8 +35,8 @@ jobs:
           ${{ matrix.build }}
           mv ./whisper.cpp/main ./whisper.cpp/whisper-cli-${{ matrix.target }}
           mkdir dist
-          cp ./whisper.cpp/whisper-cli-${{ matrix.target }} ./dist
-          chmod +x ./dist/whisper-cli-${{ matrix.target }}
+          cp ./whisper.cpp/whisper-${{ matrix.target }} ./dist
+          chmod +x ./dist/whisper-${{ matrix.target }}
           cp ./whisper.cpp/models/download-ggml-model.sh ./dist
 
       - name: Upload binaries
@@ -149,10 +149,12 @@ jobs:
         working-directory: npm  
       - name: Publish aarch64-apple-darwin
         run: |
+          chmod +x whisper-aarch64-apple-darwin download-ggml-model.sh
           npm publish --access public
         working-directory: npm/aarch64-apple-darwin
       - name: Publish x86_64-apple-darwin
         run: |
+          chmod +x whisper-x86_64-apple-darwin download-ggml-model.sh
           npm publish --access public
         working-directory: npm/x86_64-apple-darwin
       - name: Publish i686-pc-windows-msvc

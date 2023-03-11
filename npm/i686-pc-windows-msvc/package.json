@@ -1,6 +1,6 @@
 {
   "name": "@promer94/whisper-tauri-win32-ia32-msvc",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "os": [
     "win32"
   ],

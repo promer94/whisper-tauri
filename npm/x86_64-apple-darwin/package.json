@@ -1,6 +1,6 @@
 {
   "name": "@promer94/whisper-tauri-x86_64-apple-darwin",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "os": [
     "darwin"
   ],
