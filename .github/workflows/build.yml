@@ -74,16 +74,16 @@ jobs:
 
       - name: Build
         run: |
-          cd ./build
+          cd ./whisper.cpp/build
           msbuild ALL_BUILD.vcxproj -t:build -p:configuration=${{ matrix.build }} -p:platform=${{ matrix.arch }}
 
       - name: Copy SDL2.dll
         if: matrix.sdl2 == 'ON'
-        run: copy "$env:SDL2_DIR/../lib/${{ matrix.s2arc }}/SDL2.dll" build/bin/${{ matrix.build }}
+        run: copy "$env:SDL2_DIR/../lib/${{ matrix.s2arc }}/SDL2.dll" ./whisper.cpp/build/bin/${{ matrix.build }}
 
       - name: Upload binaries
         if: matrix.sdl2 == 'ON'
         uses: actions/upload-artifact@v1
         with:
           name: whisper-bin-${{ matrix.arch }}
-          path: build/bin/${{ matrix.build }}
+          path: ./whisper.cpp/build/bin/${{ matrix.build }}
